@@ -1,5 +1,7 @@
 pycoin==0.76
 python-bitcoinlib==0.7.0
 requests>=2.12.1
+validators>=0.11.1
+werkzeug>=0.11.11
 tox==2.3.1
 pyld>=0.7.1

@@ -3,10 +3,11 @@ import json
 import bitcoin
 from bitcoin.signmessage import BitcoinMessage, SignMessage, VerifyMessage
 from bitcoin.wallet import CBitcoinSecret
-from cert_schema import jsonld_document_loader
 from pyld import jsonld
 from pyld.jsonld import JsonLdProcessor
 from werkzeug.contrib.cache import SimpleCache
+
+from .document_loader import jsonld_document_loader
 
 cache = SimpleCache()
 
@@ -134,4 +135,3 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
-

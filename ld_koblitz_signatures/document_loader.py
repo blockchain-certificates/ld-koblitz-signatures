@@ -1,14 +1,13 @@
-import logging
-
 import requests
 import validators
 
-from cert_schema.schema_tools.schema_validator import BlockcertValidationError
+
+class InvalidUrlError(Exception):
+    pass
 
 
 def load_document(url):
     """
-    Propagates BlockcertValidationError is url is invalid or doesn't exist
     :param url:
     :return:
     """
@@ -18,8 +17,7 @@ def load_document(url):
             url, headers={'Accept': 'application/ld+json, application/json'}
         )
         return response.text
-    logging.error('invalid url=%s', url)
-    raise BlockcertValidationError('invalid url={}'.format(url))
+    raise InvalidUrlError('Could not validate ' + url)
 
 
 def jsonld_document_loader(url):

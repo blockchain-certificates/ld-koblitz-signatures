@@ -2,21 +2,20 @@ import unittest
 
 from werkzeug.contrib.cache import SimpleCache
 
-from cert_schema import jsonld_document_loader, BlockcertValidationError
+from ld_koblitz_signatures.document_loader import jsonld_document_loader, InvalidUrlError
 
 cache = SimpleCache()
 
 
 class TestDocumentLoader(unittest.TestCase):
-
     def test_bogus_url(self):
         try:
-            cached_document_loader('bogus_url')
-        except BlockcertValidationError as bve:
-            self.assertTrue(True, 'caught expected validation exception')
+            res = cached_document_loader('bogus_url')
+        except InvalidUrlError:
+            self.assertTrue(True, 'caught expected exception')
             return
 
-        self.fail('Did not catch BlockcertValidationError')
+        self.fail('Did not catch InvalidUrlError')
 
     def test_working_url(self):
         doc = cached_document_loader('https://w3id.org/blockcerts/v1')
