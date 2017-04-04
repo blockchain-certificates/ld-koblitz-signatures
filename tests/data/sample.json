@@ -1,0 +1,10 @@
+{
+  "@context": ["https://schema.org/", "https://w3id.org/security/v1"],
+  "claim": {
+    "id": "did:btc1:298347982739",
+    "name": "Jane Doe",
+    "jobTitle": "Professor",
+    "telephone": "(425) 123-4567",
+    "url": "http://www.janedoe.com"
+  }
+}

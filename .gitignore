@@ -1,0 +1,17 @@
+conf.ini
+.DS_Store
+*.pyc
+venv*/
+.idea/*
+
+.cache/
+.coverage
+.eggs/
+.tox/
+*build/
+
+*.egg-info*
+*.log
+.swagger-codegen-ignore
+
+dist/*

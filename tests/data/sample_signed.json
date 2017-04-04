@@ -1,0 +1,19 @@
+{
+  "claim": {
+    "id": "did:btc1:298347982739",
+    "jobTitle": "Professor",
+    "url": "http://www.janedoe.com",
+    "telephone": "(425) 123-4567",
+    "name": "Jane Doe"
+  },
+  "@context": [
+    "https://schema.org/",
+    "https://w3id.org/security/v1"
+  ],
+  "signature": {
+    "created": "2017-03-24T21:48:24Z",
+    "type": "EcdsaKoblitzSignature2016",
+    "signatureValue": "IIuS0n2qXIa2PXKdp7EKZfk6LNbt6Sj2BaGk4cH+kW50X0CgF1ax4vDZDxeeYldXPxHUlImTfPBPWbBjavMW4oo=",
+    "creator": "ecdsa-koblitz-pubkey:1LGpGhGK8whX23ZNdxrgtjKrek9rP4xWER"
+  }
+}
