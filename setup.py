@@ -14,7 +14,7 @@ with open(os.path.join(here, 'README.md')) as fp:
 
 setup(
     name='ld-koblitz-signatures',
-    version='0.0.1',
+    version='0.0.2',
     url='https://github.com/blockchain-certificates/ld-koblitz-signatures',
     license='MIT',
     author='Blockchain Certificates',
