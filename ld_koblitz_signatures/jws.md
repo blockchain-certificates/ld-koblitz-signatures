@@ -8,6 +8,9 @@ More specifically we implement a subset of the [JSON Web Signature Unencoded Pay
 Option RFC 7797](https://datatracker.ietf.org/doc/html/rfc7797). The only
 supported algorithm is __RS256__.
 
+Ultimately we would like to be able to produce JSON-LD signatures with JWS that
+could be verified by any JWS implementation.
+
 ## Implementation
 
 This implementation is currently python3 only.
@@ -27,6 +30,30 @@ and the resulting signature should match `eyJhbGciOiJSUzI1NiIsImI2NCI6ZmFsc2UsIm
 
 Currently the code is able to construct the correct unencoded payload from the
 headers and the json-ld document and produce a correct signature.
+
+## Steps to produce a correct JSON-LD signature with JWS
+We start with a JSON-LD document and we want to produce JSON Web Signature:
+
+1. Normalize the JSON-LD with the URDNA2015 algorithm (not sure if this is
+   correct)
+2. SHA256 hash the normalized JSON-LD
+3. Use the hash as the input for JWS signature with the header `{"alg":"RS256","b64":false,"crit":["b64"]}`
+4. Create a new key `signatureValue` in the JSON-LD document and use the
+   generated signature as its value.
+
+## Steps to verify
+We have not implemented the verification algorithm so this is just a tentative
+description of what should happen:
+
+1. Remove the `signatureValue` from the JSON-LD document
+2. Normalize the resulting JSON-LD document (without the `signatureValue` key)
+3. SHA256 hash the normalized JSON-LD
+4. Use the hash and the payload as inputs to JWS verification algorithm
+
+Open questions. Since we are dealing with unencoded payloads and since RS256
+already hashes the input is there really a need to hash the normalized JSON-LD
+or can we just use the normalized JSON-LD as an input to the JWS signing
+algorithm.
 
 ## Problems encountered
 
